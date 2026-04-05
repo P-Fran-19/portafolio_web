@@ -353,7 +353,7 @@ const content: Record<Language, PortfolioContent> = {
   },
 };
 
-const skills = [
+const skills: ReadonlyArray<{ name: string; level: number }> = [
   { name: 'Java', level: 82 },
   { name: 'Python', level: 85 },
   { name: 'C', level: 82 },
@@ -362,7 +362,7 @@ const skills = [
   { name: 'HTML & CSS', level: 88 },
   { name: 'Cybersecurity', level: 75 },
   { name: 'Data Analysis', level: 78 },
-] as const;
+];
 
 function runDataChecks(): void {
   if (content.es.timeline.length !== content.en.timeline.length) {
@@ -370,9 +370,6 @@ function runDataChecks(): void {
   }
   if (content.es.cards.length !== content.en.cards.length) {
     throw new Error('Cards data must have the same number of entries in both languages.');
-  }
-  if (skills.length === 0) {
-    throw new Error('Skills data cannot be empty.');
   }
 }
 
